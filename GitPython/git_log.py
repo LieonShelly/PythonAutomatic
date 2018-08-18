@@ -17,7 +17,7 @@ def get_today_log():
     today = datetime.date.today()
     today_timestamp = time.mktime(today.timetuple())
     log_list = list(repo.head.log())
-    today_logs = list(filter(lambda log: is_same_day(float(log.time[0]), 1533902582) , log_list))
+    today_logs = list(filter(lambda log: is_same_day(float(log.time[0]), today_timestamp) , log_list))
     my_logs = list(filter(lambda log: str(log.actor) == user_name, today_logs))
     messages = list(map(lambda log: log.message, my_logs))
     messge_list = []
